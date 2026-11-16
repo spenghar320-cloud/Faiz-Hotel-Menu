@@ -1,689 +1,794 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Faiz Hotel | Lahore</title>
-
+<meta name="description" content="Order delicious Pakistani food from The Faiz Hotel, DHA Phase 8 Lahore.">
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --gold: #d6ad60;
+  --black: #090909;
+  --panel: #171717;
+  --muted: #aaa;
 }
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body {
-    font-family: Arial, sans-serif;
-    background: #fffaf0;
-    color: #222;
+  background: var(--black);
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
 }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
 
+/* HEADER */
 header {
-    background: #123d2b;
-    color: white;
-    text-align: center;
-    padding: 25px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8,8,8,.96);
+  border-bottom: 1px solid #35302a;
+  padding: 14px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.logo {
+  color: var(--gold);
+  font-family: Georgia, serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+.logo small {
+  display: block;
+  color: white;
+  font: 9px Arial;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-top: 4px;
+}
+nav { display: flex; gap: 24px; align-items: center; }
+nav a { font-size: 13px; color: #ddd; }
+nav a:hover { color: var(--gold); }
+.cart-button {
+  background: var(--gold);
+  border: none;
+  color: #111;
+  padding: 11px 17px;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
-header h1 {
-    color: #f5c45e;
-    font-size: 36px;
-    letter-spacing: 2px;
-}
-
-header p {
-    margin-top: 8px;
-}
-
-nav {
-    background: #09271b;
-    padding: 14px;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 8px;
-    font-weight: bold;
-}
-
+/* HERO */
 .hero {
-    background: linear-gradient(#0008,#0008),
-    url("https://images.unsplash.com/photo-1547592180-85f173990554?w=1400")
+  min-height: 570px;
+  display: flex;
+  align-items: center;
+  padding: 70px 8%;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.95),rgba(0,0,0,.65),rgba(0,0,0,.2)),
+    url("https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=1800&q=85")
     center/cover;
-    color: white;
-    text-align: center;
-    padding: 85px 15px;
 }
-
-.hero h2 {
-    font-size: 38px;
-    color: #ffd16c;
-    margin-bottom: 15px;
+.hero-content { max-width: 620px; }
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: 12px;
+  margin-bottom: 18px;
 }
-
+.hero h1 {
+  font: bold clamp(43px,7vw,76px) Georgia,serif;
+  line-height: 1.12;
+  margin-bottom: 20px;
+}
+.hero h1 span { color: var(--gold); }
 .hero p {
-    font-size: 18px;
-    margin-bottom: 20px;
+  color: #ddd;
+  line-height: 1.8;
+  margin-bottom: 28px;
+  max-width: 490px;
+}
+.gold-button {
+  display: inline-block;
+  background: var(--gold);
+  color: #111;
+  border: none;
+  padding: 14px 25px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin: 5px 8px 5px 0;
+}
+.outline-button {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 13px 24px;
+  border-radius: 4px;
+  font-weight: bold;
 }
 
-.container {
-    max-width: 1150px;
-    margin: auto;
-    padding: 25px 15px;
+/* GENERAL */
+section { padding: 75px 6%; }
+.section-heading { text-align: center; margin-bottom: 38px; }
+.section-heading .eyebrow { margin-bottom: 10px; }
+.section-heading h2 {
+  font: bold clamp(29px,4vw,43px) Georgia,serif;
 }
+.section-heading h2 span { color: var(--gold); }
+.section-heading p { color: var(--muted); margin-top: 12px; }
 
-.section-title {
-    text-align: center;
-    color: #145336;
-    margin: 35px 0 20px;
-    font-size: 27px;
-}
-
-.welcome {
-    text-align: center;
-    background: #fff0cf;
-    padding: 25px;
-    border-radius: 12px;
-    margin: 20px 0;
-    line-height: 1.8;
-}
-
+/* MENU */
+.menu-section { background: #101010; }
 .search-box {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    border: 2px solid #145336;
-    border-radius: 30px;
-    font-size: 16px;
-    margin: 20px auto;
-    outline: none;
+  max-width: 520px;
+  margin: 0 auto 25px;
 }
-
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px;
+.search-box input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #4a4030;
+  background: #1b1b1b;
+  color: white;
+  border-radius: 6px;
+  outline: none;
 }
-
+.search-box input:focus { border-color: var(--gold); }
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.category-btn {
+  padding: 10px 17px;
+  border: 1px solid #50432e;
+  background: transparent;
+  color: #ddd;
+  border-radius: 25px;
+}
+.category-btn.active, .category-btn:hover {
+  background: var(--gold);
+  color: #111;
+  border-color: var(--gold);
+}
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+  gap: 24px;
+  max-width: 1250px;
+  margin: auto;
+}
 .food-card {
-    background: white;
-    border-radius: 13px;
-    overflow: hidden;
-    box-shadow: 0 3px 12px #0002;
-    text-align: center;
-    padding-bottom: 17px;
-    transition: 0.3s;
+  background: var(--panel);
+  border: 1px solid #292929;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: .3s;
 }
-
 .food-card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
+  border-color: var(--gold);
 }
-
-.food-image {
-    height: 135px;
-    background: linear-gradient(135deg,#174b32,#d3a64d);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 65px;
+.food-card img {
+  width: 100%;
+  height: 195px;
+  object-fit: cover;
+  display: block;
+  background: #282828;
 }
-
-.food-card h3 {
-    margin: 14px 5px 8px;
-    font-size: 17px;
+.food-info { padding: 17px; }
+.food-info h3 {
+  font: bold 21px Georgia,serif;
+  margin-bottom: 9px;
 }
-
-.price {
-    color: #168047;
-    font-weight: bold;
-    font-size: 18px;
-    margin: 10px;
+.food-info p {
+  color: #aaa;
+  font-size: 12px;
+  min-height: 30px;
+  line-height: 1.5;
 }
-
-button {
-    border: none;
-    cursor: pointer;
-    border-radius: 7px;
-    padding: 11px 15px;
-    font-weight: bold;
-    font-size: 14px;
+.food-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  gap: 8px;
 }
-
-.add-btn {
-    background: #145336;
-    color: white;
+.price { color: var(--gold); font-size: 19px; font-weight: bold; }
+.add-button {
+  background: var(--gold);
+  color: #111;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 13px;
+  font-weight: bold;
 }
-
-.add-btn:hover {
-    background: #1b7748;
-}
-
-.cart {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    margin-top: 35px;
-    box-shadow: 0 3px 12px #0002;
-}
-
-.cart h2 {
-    color: #145336;
-    margin-bottom: 15px;
-}
-
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    border-bottom: 1px solid #ddd;
-    padding: 12px 0;
-}
-
-.cart-item button {
-    padding: 5px 10px;
-    background: #eee;
-}
-
-.total {
-    font-size: 22px;
-    color: #145336;
-    font-weight: bold;
-    text-align: right;
-    margin: 20px 0;
-}
-
-.whatsapp-btn {
-    background: #25D366;
-    color: white;
-    display: block;
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    font-size: 17px;
-}
-
-.clear-btn {
-    background: #b52c2c;
-    color: white;
-}
-
-.contact {
-    background: #123d2b;
-    color: white;
-    text-align: center;
-    padding: 35px 15px;
-    line-height: 2;
-    margin-top: 35px;
-}
-
-.contact h2 {
-    color: #f5c45e;
-}
-
-.contact a {
-    color: #f5c45e;
-    text-decoration: none;
-}
-
-footer {
-    background: #09271b;
-    color: white;
-    text-align: center;
-    padding: 18px;
-}
-
-.floating-whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 18px;
-    background: #25D366;
-    color: white;
-    padding: 15px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 3px 10px #0004;
-    z-index: 20;
-}
-
 .no-results {
-    text-align: center;
-    padding: 25px;
-    color: #a33;
+  text-align: center;
+  color: #aaa;
+  grid-column: 1/-1;
+  padding: 35px;
 }
 
-@media(max-width:600px) {
-    header h1 {font-size: 28px;}
-    .hero h2 {font-size: 28px;}
-    nav a {display: inline-block; margin: 6px;}
+/* ABOUT */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+  align-items: center;
+}
+.about img {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+  border-radius: 9px;
+}
+.about h2 {
+  font: bold 40px Georgia,serif;
+  margin-bottom: 20px;
+}
+.about h2 span { color: var(--gold); }
+.about p { color: #bbb; line-height: 1.9; margin-bottom: 15px; }
+
+/* CONTACT */
+.contact-section { background: #111; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
+  gap: 18px;
+}
+.contact-card {
+  text-align: center;
+  background: #1b1b1b;
+  padding: 28px 15px;
+  border: 1px solid #393126;
+  border-radius: 8px;
+}
+.contact-card .symbol { font-size: 30px; margin-bottom: 12px; }
+.contact-card h3 { color: var(--gold); margin-bottom: 10px; }
+.contact-card p { color: #bbb; line-height: 1.6; font-size: 14px; }
+
+/* FOOTER */
+footer {
+  padding: 35px 6%;
+  text-align: center;
+  border-top: 1px solid #333;
+  color: #aaa;
+  line-height: 2;
+}
+footer strong { color: var(--gold); }
+
+/* FLOATING WHATSAPP */
+.whatsapp-float {
+  position: fixed;
+  right: 19px;
+  bottom: 20px;
+  z-index: 110;
+  background: #20c768;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 40px;
+  font-weight: bold;
+  box-shadow: 0 4px 20px #0008;
+}
+
+/* CART DRAWER */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #000b;
+  display: none;
+}
+.cart-overlay.show { display: block; }
+.cart-panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: min(430px,100%);
+  background: #141414;
+  padding: 23px;
+  overflow-y: auto;
+  border-left: 1px solid #51432d;
+}
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #444;
+}
+.cart-header h2 { color: var(--gold); font-family: Georgia,serif; }
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+}
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid #333;
+}
+.cart-item h4 { margin-bottom: 7px; }
+.cart-item small { color: var(--gold); }
+.quantity { display: flex; align-items: center; gap: 10px; }
+.quantity button {
+  background: #30291e;
+  color: var(--gold);
+  border: 1px solid #59482d;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+}
+.cart-total {
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+.cart-total strong { color: var(--gold); }
+.checkout-form { border-top: 1px solid #444; padding-top: 20px; }
+.checkout-form h3 { color: var(--gold); margin-bottom: 15px; }
+.checkout-form input, .checkout-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 11px;
+  border-radius: 5px;
+  border: 1px solid #484038;
+  background: #222;
+  color: white;
+  outline: none;
+}
+.checkout-form textarea { min-height: 75px; resize: vertical; }
+.checkout-btn {
+  width: 100%;
+  padding: 15px;
+  background: #20c768;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.empty-cart { text-align: center; color: #aaa; padding: 45px 0; }
+
+/* MOBILE */
+@media(max-width:750px) {
+  header { padding: 12px 4%; }
+  nav { display: none; }
+  .hero { min-height: 520px; padding: 55px 6%; background-position: 58% center; }
+  section { padding: 55px 5%; }
+  .about { grid-template-columns: 1fr; }
+  .about img { height: 270px; }
+  .food-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+  .food-card img { height: 140px; }
+  .food-info { padding: 12px; }
+  .food-info h3 { font-size: 16px; }
+  .food-info p { font-size: 11px; }
+  .price { font-size: 15px; }
+  .add-button { padding: 9px 8px; font-size: 11px; }
+}
+@media(max-width:370px) {
+  .food-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
-
 <body>
 
 <header>
-    <h1>THE FAIZ HOTEL</h1>
-    <p>🍽️ Authentic Pakistani Food & Traditional Taste</p>
-    <p>📍 DHA Phase 8, Lahore</p>
+  <a class="logo" href="#home">
+    THE FAIZ HOTEL
+    <small>PREMIUM PAKISTANI CUISINE</small>
+  </a>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#menu">Our Menu</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="cart-button" onclick="openCart()">
+    🛒 Cart (<span id="cart-count">0</span>)
+  </button>
 </header>
 
-<nav>
-    <a href="#home">Home</a>
-    <a href="#menu">Menu</a>
-    <a href="#cart">My Cart</a>
-    <a href="#contact">Contact</a>
-</nav>
-
+<!-- HERO -->
 <section class="hero" id="home">
-    <h2>Welcome to The Faiz Hotel!</h2>
-    <p>Enjoy delicious Pakistani food, made fresh with love.</p>
-    <p>Fresh Food • Best Taste • Great Service</p>
-    <button class="add-btn"
-        onclick="document.getElementById('menu').scrollIntoView()">
-        Explore Our Menu
-    </button>
+  <div class="hero-content">
+    <div class="eyebrow">WELCOME TO THE FAIZ HOTEL</div>
+    <h1>Experience The<br><span>Real Taste</span> Of Pakistan</h1>
+    <p>
+      Enjoy delicious Pakistani food, freshly prepared with
+      traditional spices, rich flavours and love.
+      Your favourite food is just one order away!
+    </p>
+    <a href="#menu" class="gold-button">EXPLORE OUR MENU</a>
+    <a href="#contact" class="outline-button">CONTACT US</a>
+  </div>
 </section>
 
-<div class="container">
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="section-heading">
+    <div class="eyebrow">FRESH • DELICIOUS • AUTHENTIC</div>
+    <h2>Our <span>Special Menu</span></h2>
+    <p>Choose your favourite dishes and order directly on WhatsApp.</p>
+  </div>
 
-    <div class="welcome">
-        <h2>❤️ Welcome Dear Customers ❤️</h2>
-        <p>
-        Welcome to The Faiz Hotel, where traditional Pakistani
-        flavours meet quality and freshness.
-        Enjoy our delicious Karahi, Biryani, BBQ, traditional
-        dishes and desserts.
-        </p>
-        <p><b>Thank you for choosing The Faiz Hotel!</b></p>
+  <div class="search-box">
+    <input type="search" id="search"
+      placeholder="🔍 Search chicken, biryani, karahi..."
+      oninput="renderMenu()">
+  </div>
+
+  <div class="categories" id="categories">
+    <button class="category-btn active" onclick="setCategory('All',this)">All</button>
+    <button class="category-btn" onclick="setCategory('Chicken',this)">Chicken Specials</button>
+    <button class="category-btn" onclick="setCategory('Rice',this)">Rice & Biryani</button>
+    <button class="category-btn" onclick="setCategory('Desi',this)">Desi Foods</button>
+    <button class="category-btn" onclick="setCategory('Dessert',this)">Desserts</button>
+    <button class="category-btn" onclick="setCategory('Drinks',this)">Drinks</button>
+  </div>
+
+  <div class="food-grid" id="food-grid"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about">
+    <img
+      src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85"
+      alt="Freshly prepared food at The Faiz Hotel">
+    <div>
+      <div class="eyebrow">OUR STORY</div>
+      <h2>Welcome To <span>The Faiz Hotel</span></h2>
+      <p>
+        The Faiz Hotel brings you the authentic taste of Pakistani
+        cuisine. We believe every meal should be special.
+      </p>
+      <p>
+        From delicious chicken karahi to traditional biryani
+        and tasty desi dishes, discover food made to satisfy
+        your cravings.
+      </p>
+      <a href="#menu" class="gold-button">ORDER YOUR FOOD</a>
     </div>
+  </div>
+</section>
 
-    <h2 class="section-title" id="menu">🍴 Our Food Menu</h2>
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-heading">
+    <div class="eyebrow">GET IN TOUCH</div>
+    <h2>Visit <span>The Faiz Hotel</span></h2>
+    <p>We are ready to serve you delicious food!</p>
+  </div>
 
-    <input
-        type="text"
-        class="search-box"
-        id="search"
-        placeholder="🔍 Search your favourite food..."
-        oninput="searchFood()">
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="symbol">📍</div>
+      <h3>Our Location</h3>
+      <p>DHA Phase 8<br>Lahore, Pakistan</p>
+    </div>
+    <div class="contact-card">
+      <div class="symbol">📞</div>
+      <h3>Call Us</h3>
+      <p>0347-8683781</p>
+    </div>
+    <div class="contact-card">
+      <div class="symbol">💬</div>
+      <h3>WhatsApp</h3>
+      <p>Order your favourite food directly.</p>
+      <a class="gold-button" style="margin-top:12px"
+        href="https://wa.me/923478683781">CHAT NOW</a>
+    </div>
+  </div>
 
-    <div id="menu-container"></div>
-
-    <section class="cart" id="cart">
-        <h2>🛒 Your Shopping Cart</h2>
-        <div id="cart-items">
-            Your cart is empty.
-        </div>
-
-        <div class="total" id="total">
-            Total: Rs. 0
-        </div>
-
-        <button class="whatsapp-btn" onclick="orderWhatsApp()">
-            📲 ORDER ON WHATSAPP
-        </button>
-
-        <button class="clear-btn" onclick="clearCart()">
-            Clear Cart
-        </button>
-    </section>
-
-</div>
-
-<section class="contact" id="contact">
-    <h2>THE FAIZ HOTEL</h2>
-    <p>📍 DHA Phase 8, Lahore, Pakistan</p>
-    <p>📞 Contact: 03478683781</p>
-    <p>🟢 WhatsApp: 03478683781</p>
-
-    <a href="tel:+923478683781">
-        <button class="add-btn">📞 CALL NOW</button>
-    </a>
-
-    <a href="https://wa.me/923478683781"
-       target="_blank">
-        <button class="whatsapp-btn">
-            CHAT ON WHATSAPP
-        </button>
-    </a>
+  <div style="text-align:center;margin-top:30px">
+    <a class="outline-button"
+      href="https://www.google.com/maps/search/?api=1&query=DHA+Phase+8+Lahore"
+      target="_blank">📍 FIND US ON GOOGLE MAPS</a>
+  </div>
 </section>
 
 <footer>
-    <p>© 2026 The Faiz Hotel. All Rights Reserved.</p>
-    <p>Made with ❤️ in Lahore, Pakistan</p>
+  <strong>THE FAIZ HOTEL</strong><br>
+  Premium Pakistani Cuisine<br>
+  DHA Phase 8, Lahore, Pakistan<br>
+  WhatsApp: 0347-8683781<br>
+  © <span id="year"></span> The Faiz Hotel. All Rights Reserved.
 </footer>
 
-<a class="floating-whatsapp"
-   href="https://wa.me/923478683781"
-   target="_blank">
-   WhatsApp 💬
-</a>
+<a class="whatsapp-float"
+  href="https://wa.me/923478683781"
+  target="_blank">💬 WhatsApp</a>
+
+<!-- CART -->
+<div class="cart-overlay" id="cart-overlay" onclick="overlayClick(event)">
+  <div class="cart-panel">
+    <div class="cart-header">
+      <h2>Your Shopping Cart</h2>
+      <button class="close-btn" onclick="closeCart()">×</button>
+    </div>
+
+    <div id="cart-items"></div>
+
+    <div class="cart-total">
+      <span>Total Bill:</span>
+      <strong id="cart-total">Rs. 0</strong>
+    </div>
+
+    <div class="checkout-form">
+      <h3>Customer Details</h3>
+      <input id="customer-name" type="text" placeholder="Your full name" required>
+      <input id="customer-phone" type="tel" placeholder="Your phone number" required>
+      <textarea id="customer-address" placeholder="Delivery address (if required)"></textarea>
+      <textarea id="customer-notes" placeholder="Special instructions (optional)"></textarea>
+      <button class="checkout-btn" onclick="checkout()">
+        ORDER ON WHATSAPP 💬
+      </button>
+      <p style="font-size:11px;color:#aaa;margin-top:12px">
+        Your order details will be sent to The Faiz Hotel on WhatsApp.
+      </p>
+    </div>
+  </div>
+</div>
 
 <script>
+// HOTEL SETTINGS
+const WHATSAPP_NUMBER = "923478683781";
 
-// HOTEL WHATSAPP NUMBER
-const WHATSAPP = "923478683781";
-
-// COMPLETE FOOD MENU
+// MENU DATA
+// Prices are in Pakistani Rupees.
+// Image URLs load photographs from Unsplash.
 const menu = [
-{
- category:"CHICKEN SPECIALS",
- items:[
- ["Chicken Karahi",1800,"🍗"],
- ["Chicken White Karahi",1900,"🍲"],
- ["Chicken Handi",1800,"🍛"],
- ["Chicken Achari Karahi",1850,"🍗"],
- ["Chicken Ginger",1700,"🍲"],
- ["Chicken Jalfrezi",1400,"🍛"],
- ["Chicken Tikka",450,"🍗"],
- ["Chicken Malai Boti",600,"🍢"]
- ]
-},
-{
- category:"RICE & BIRYANI",
- items:[
- ["Chicken Biryani",500,"🍚"],
- ["Beef Biryani",600,"🍛"],
- ["Chicken Pulao",500,"🍚"],
- ["Beef Pulao",650,"🍛"],
- ["Mutton Pulao",850,"🍚"],
- ["Special Rice",700,"🍚"]
- ]
-},
-{
- category:"BBQ & KEBABS",
- items:[
- ["Chicken Seekh Kebab",250,"🍢"],
- ["Beef Seekh Kebab",300,"🍢"],
- ["Chicken Reshmi Kebab",350,"🍢"],
- ["Chicken Boti",500,"🍗"],
- ["Beef Bihari Boti",650,"🥩"],
- ["Chicken Tikka Leg",550,"🍗"],
- ["Malai Boti",600,"🍢"]
- ]
-},
-{
- category:"TRADITIONAL DISHES",
- items:[
- ["Beef Nihari",700,"🥘"],
- ["Chicken Haleem",450,"🍲"],
- ["Beef Haleem",550,"🍲"],
- ["Mix Sabzi",400,"🥗"],
- ["Daal Mash",350,"🍛"],
- ["Chana Masala",300,"🥘"],
- ["Palak Paneer",500,"🥬"]
- ]
-},
-{
- category:"ROTI & BREAD",
- items:[
- ["Simple Roti",30,"🫓"],
- ["Tandoori Roti",40,"🫓"],
- ["Naan",50,"🫓"],
- ["Garlic Naan",150,"🫓"],
- ["Roghni Naan",100,"🫓"],
- ["Paratha",100,"🫓"],
- ["Butter Naan",150,"🫓"]
- ]
-},
-{
- category:"DESSERTS",
- items:[
- ["Special Ice Cream",1500,"🍨"],
- ["Kheer",250,"🍮"],
- ["Gajar Halwa",300,"🍮"],
- ["Gulab Jamun",200,"🍩"],
- ["Shahi Tukray",300,"🍰"]
- ]
-},
-{
- category:"COLD DRINKS",
- items:[
- ["Pepsi",250,"🥤"],
- ["Coke",250,"🥤"],
- ["Sprite",250,"🥤"],
- ["Fresh Lime",200,"🍋"],
- ["Mineral Water",100,"💧"],
- ["Fresh Juice",350,"🧃"]
- ]
-}
+  {
+    id:1, name:"Chicken Karahi", price:1800,
+    category:"Chicken",
+    description:"Traditional spicy chicken karahi.",
+    image:"https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id:2, name:"White Chicken Karahi", price:1900,
+    category:"Chicken",
+    description:"Creamy and delicious white karahi.",
+    image:"https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id:3, name:"Chicken Kabab", price:250,
+    category:"Chicken",
+    description:"Juicy and flavourful chicken kebab.",
+    image:"https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id:4, name:"Chicken Biryani", price:500,
+    category:"Rice",
+    description:"Aromatic rice with delicious chicken.",
+    image:"https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id:5, name:"Mix Sabzi", price:400,
+    category:"Desi",
+    description:"Traditional mixed vegetable curry.",
+    image:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id:6, name:"Pulao", price:500,
+    category:"Rice",
+    description:"Fragrant traditional rice pulao.",
+    image:"https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id:7, name:"Haleem", price:450,
+    category:"Desi",
+    description:"Rich and traditional desi haleem.",
+    image:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id:8, name:"Special Ice Cream", price:1500,
+    category:"Dessert",
+    description:"A special sweet treat to enjoy.",
+    image:"https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id:9, name:"Cold Drinks", price:250,
+    category:"Drinks",
+    description:"Refreshing cold drinks. Starting from Rs. 250.",
+    image:"https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=700&q=80"
+  }
 ];
 
-// SHOPPING CART
 let cart = [];
+let activeCategory = "All";
+
+function money(amount) {
+  return "Rs. " + amount.toLocaleString("en-PK");
+}
 
 // DISPLAY MENU
-function displayMenu(filter = "") {
+function renderMenu() {
+  const search = document.getElementById("search").value.toLowerCase().trim();
+  const grid = document.getElementById("food-grid");
 
-    const container =
-        document.getElementById("menu-container");
+  const filtered = menu.filter(item => {
+    const matchesSearch =
+      item.name.toLowerCase().includes(search) ||
+      item.description.toLowerCase().includes(search);
 
-    container.innerHTML = "";
+    const matchesCategory =
+      activeCategory === "All" || item.category === activeCategory;
 
-    let found = 0;
+    return matchesSearch && matchesCategory;
+  });
 
-    menu.forEach(category => {
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="no-results">No food items found. Try another search.</div>';
+    return;
+  }
 
-        const filteredItems = category.items.filter(item =>
-            item[0].toLowerCase().includes(filter.toLowerCase())
-        );
-
-        if(filteredItems.length === 0) return;
-
-        found += filteredItems.length;
-
-        const heading = document.createElement("h2");
-        heading.className = "section-title";
-        heading.textContent = category.category;
-
-        container.appendChild(heading);
-
-        const grid = document.createElement("div");
-        grid.className = "menu-grid";
-
-        filteredItems.forEach(item => {
-
-            const name = item[0];
-            const price = item[1];
-            const emoji = item[2];
-
-            const card = document.createElement("div");
-            card.className = "food-card";
-
-            const image = document.createElement("div");
-            image.className = "food-image";
-            image.textContent = emoji;
-
-            const title = document.createElement("h3");
-            title.textContent = name;
-
-            const priceElement = document.createElement("div");
-            priceElement.className = "price";
-            priceElement.textContent = "Rs. " + price;
-
-            const button = document.createElement("button");
-            button.className = "add-btn";
-            button.textContent = "➕ ADD TO CART";
-
-            button.onclick = () => addToCart(name,price);
-
-            card.appendChild(image);
-            card.appendChild(title);
-            card.appendChild(priceElement);
-            card.appendChild(button);
-
-            grid.appendChild(card);
-        });
-
-        container.appendChild(grid);
-    });
-
-    if(found === 0) {
-        container.innerHTML =
-            '<p class="no-results">No food item found!</p>';
-    }
+  grid.innerHTML = filtered.map(item => `
+    <article class="food-card">
+      <img
+        src="${item.image}"
+        alt="${item.name}"
+        loading="lazy"
+        onerror="this.src='https://placehold.co/600x400/171717/d6ad60?text=The+Faiz+Hotel'">
+      <div class="food-info">
+        <h3>${item.name}</h3>
+        <p>${item.description}</p>
+        <div class="food-bottom">
+          <span class="price">${money(item.price)}</span>
+          <button class="add-button" onclick="addToCart(${item.id})">
+            + Add
+          </button>
+        </div>
+      </div>
+    </article>
+  `).join("");
 }
 
-// SEARCH FOOD
-function searchFood() {
-    const value =
-        document.getElementById("search").value;
-
-    displayMenu(value);
+function setCategory(category, button) {
+  activeCategory = category;
+  document.querySelectorAll(".category-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+  button.classList.add("active");
+  renderMenu();
 }
 
-// ADD TO CART
-function addToCart(name,price) {
+// CART FUNCTIONS
+function addToCart(id) {
+  const item = menu.find(product => product.id === id);
+  const existing = cart.find(product => product.id === id);
 
-    const existing = cart.find(item =>
-        item.name === name
-    );
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({...item, quantity:1});
+  }
 
-    if(existing) {
-        existing.quantity++;
-    } else {
-        cart.push({
-            name:name,
-            price:price,
-            quantity:1
-        });
-    }
-
-    updateCart();
-
-    alert(name + " added to your cart!");
+  updateCart();
+  openCart();
 }
 
-// CHANGE QUANTITY
-function changeQuantity(index,amount) {
+function changeQuantity(id, amount) {
+  const item = cart.find(product => product.id === id);
+  if (!item) return;
 
-    cart[index].quantity += amount;
+  item.quantity += amount;
 
-    if(cart[index].quantity <= 0) {
-        cart.splice(index,1);
-    }
+  if (item.quantity <= 0) {
+    cart = cart.filter(product => product.id !== id);
+  }
 
-    updateCart();
+  updateCart();
 }
 
-// UPDATE CART
 function updateCart() {
+  const itemsContainer = document.getElementById("cart-items");
+  const count = cart.reduce((sum,item) => sum + item.quantity,0);
+  const total = cart.reduce((sum,item) => sum + item.price * item.quantity,0);
 
-    const cartItems =
-        document.getElementById("cart-items");
+  document.getElementById("cart-count").textContent = count;
+  document.getElementById("cart-total").textContent = money(total);
 
-    const totalElement =
-        document.getElementById("total");
+  if (!cart.length) {
+    itemsContainer.innerHTML =
+      '<div class="empty-cart">🛒<br><br>Your cart is empty.<br>Add some delicious food!</div>';
+    return;
+  }
 
-    cartItems.innerHTML = "";
-
-    if(cart.length === 0) {
-        cartItems.textContent = "Your cart is empty.";
-    }
-
-    let total = 0;
-
-    cart.forEach((item,index) => {
-
-        const subtotal =
-            item.price * item.quantity;
-
-        total += subtotal;
-
-        const row = document.createElement("div");
-        row.className = "cart-item";
-
-        const name = document.createElement("span");
-        name.textContent =
-            item.name + " (Rs. " + item.price + ")";
-
-        const controls = document.createElement("div");
-
-        const minus = document.createElement("button");
-        minus.textContent = "−";
-        minus.onclick = () => changeQuantity(index,-1);
-
-        const quantity = document.createElement("span");
-        quantity.textContent = " " + item.quantity + " ";
-
-        const plus = document.createElement("button");
-        plus.textContent = "+";
-        plus.onclick = () => changeQuantity(index,1);
-
-        const amount = document.createElement("b");
-        amount.textContent = " Rs. " + subtotal;
-
-        controls.appendChild(minus);
-        controls.appendChild(quantity);
-        controls.appendChild(plus);
-        controls.appendChild(amount);
-
-        row.appendChild(name);
-        row.appendChild(controls);
-
-        cartItems.appendChild(row);
-    });
-
-    totalElement.textContent = "Total: Rs. " + total;
+  itemsContainer.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div>
+        <h4>${item.name}</h4>
+        <small>${money(item.price)} each</small>
+      </div>
+      <div class="quantity">
+        <button onclick="changeQuantity(${item.id},-1)">−</button>
+        <strong>${item.quantity}</strong>
+        <button onclick="changeQuantity(${item.id},1)">+</button>
+      </div>
+    </div>
+  `).join("");
 }
 
-// CLEAR CART
-function clearCart() {
-    cart = [];
-    updateCart();
+function openCart() {
+  document.getElementById("cart-overlay").classList.add("show");
 }
 
-// ORDER ON WHATSAPP
-function orderWhatsApp() {
+function closeCart() {
+  document.getElementById("cart-overlay").classList.remove("show");
+}
 
-    if(cart.length === 0) {
-        alert("Please add some food items first!");
-        return;
-    }
+function overlayClick(event) {
+  if (event.target.id === "cart-overlay") closeCart();
+}
 
-    let message =
-        "Assalam-o-Alaikum! I want to place an order from The Faiz Hotel.%0A%0A";
+// WHATSAPP CHECKOUT
+function checkout() {
+  if (!cart.length) {
+    alert("Your cart is empty. Please add food first.");
+    return;
+  }
 
-    let total = 0;
+  const name = document.getElementById("customer-name").value.trim();
+  const phone = document.getElementById("customer-phone").value.trim();
+  const address = document.getElementById("customer-address").value.trim();
+  const notes = document.getElementById("customer-notes").value.trim();
 
-    cart.forEach(item => {
+  if (!name || !phone) {
+    alert("Please enter your name and phone number.");
+    return;
+  }
 
-        const subtotal =
-            item.price * item.quantity;
+  const total = cart.reduce(
+    (sum,item) => sum + item.price * item.quantity,0
+  );
 
-        total += subtotal;
+  let message =
+    "🍽️ *NEW ORDER - THE FAIZ HOTEL*\n\n" +
+    "👤 *Customer:* " + name + "\n" +
+    "📞 *Phone:* " + phone + "\n" +
+    "📍 *Address:* " + (address || "Pickup / Not provided") + "\n\n" +
+    "*ORDER DETAILS:*\n";
 
-        message +=
-            encodeURIComponent(item.name) +
-            " x " + item.quantity +
-            " = Rs. " + subtotal + "%0A";
-    });
-
+  cart.forEach(item => {
     message +=
-        "%0A" +
-        "Total Bill: Rs. " + total +
-        "%0A%0A" +
-        "Please confirm my order. Thank you!";
+      "• " + item.name +
+      " x " + item.quantity +
+      " = " + money(item.price * item.quantity) + "\n";
+  });
 
-    const url =
-        "https://wa.me/" + WHATSAPP +
-        "?text=" + message;
+  message +=
+    "\n💰 *TOTAL: " + money(total) + "*\n";
 
-    window.open(url,"_blank");
+  if (notes) {
+    message += "\n📝 *Instructions:* " + notes + "\n";
+  }
+
+  message +=
+    "\nThank you! I placed this order through The Faiz Hotel website.";
+
+  const whatsappURL =
+    "https://wa.me/" + WHATSAPP_NUMBER +
+    "?text=" + encodeURIComponent(message);
+
+  window.open(whatsappURL,"_blank");
 }
 
-// INITIALIZE WEBSITE
-displayMenu();
+// INITIALIZE
+document.getElementById("year").textContent = new Date().getFullYear();
+renderMenu();
 updateCart();
-
 </script>
-
 </body>
 </html>
